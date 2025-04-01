@@ -1,6 +1,6 @@
-# dbsession.nvim
+# session.nvim
 
-A simple small and powerful session plugin for neovim
+A small session plugin for neovim
 
 # Install
 
@@ -8,8 +8,8 @@ A simple small and powerful session plugin for neovim
 
 ```lua
 require('lazy').setup({
-    {'glepnir/dbsession.nvim', cmd = { 'SessionSave', 'SessionDelete', 'SessionLoad'},
-      opts = { --config --}
+    {'AgatZan/session.nvim', cmd = { 'SessionSave', 'SessionDelete', 'SessionLoad'},
+      opts = {} --config
     }
 })
 ```
@@ -17,15 +17,15 @@ require('lazy').setup({
 - packer.nvim
 
 ```lua
-use({'glepnir/dbsession.nvim', cmd = { 'SessionSave', 'SessionDelete', 'SessionLoad'},
-    config = function() require('dbsession').setup({}) end
+use({'AgatZan/session.nvim', cmd = { 'SessionSave', 'SessionDelete', 'SessionLoad'},
+    config = function() require('session').setup({}) end
 })
 ```
 
 # Options
 
-- `dir` the session store dir default is `stdpath(cache)/nvim/session`
-- `auto_save_on_exit` auto save session when quit neovim
+- `dir` — where session file live. Default: `stdpath(cache)/nvim/session`
+- `is_autosave_on_exit` — create autocmd to save with default name at `VimLeavePre` event in `session_autosave` group. Default: `false`
 
 # Commands
 

@@ -109,9 +109,9 @@ end
 
 function dbs:command()
 	local user_command = api.nvim_create_user_command
-	if self.opt.auto_save_on_exit then
+	if self.opt.is_autosave_on_exit then
 		api.nvim_create_autocmd("VimLeavePre", {
-			group = api.nvim_create_augroup("session_auto_save", { clear = true }),
+			group = api.nvim_create_augroup("session_autosave", { clear = true }),
 			callback = function()
 				session_save()
 			end,
@@ -142,7 +142,7 @@ end
 function dbs.setup(opt)
 	dbs.opt = {
 		dir = vim.fs.normalize(opt.dir or fn.stdpath("cache") .. os_sep .. "session"),
-		auto_save_on_exit = opt.auto_save_on_exit,
+		is_autosave_on_exit = opt.auto_save_on_exit,
 	}
 	if fn.isdirectory(dbs.opt.dir) == 0 then
 		fn.mkdir(dbs.opt.dir, "p")
