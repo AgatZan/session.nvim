@@ -8,7 +8,7 @@ local function default_session_name()
 	end
 	-- split + concat
 	local cwd = ""
-	local size, last, pos = #os_sep, 1, t_cwd:find(os_sep, 1, true)
+	local size, last, pos = #os_sep, 1, t_cwd:find("/", 1, true)
 	while pos do
 		local item = t_cwd:sub(last, pos - 1)
 		if item:find("%p") then
@@ -16,7 +16,7 @@ local function default_session_name()
 		end
 		cwd = cwd .. "_" .. item
 		last = pos + size
-		pos = t_cwd:find(os_sep, last, true)
+		pos = t_cwd:find("/", last, true)
 	end
 	cwd = cwd .. "_" .. t_cwd:sub(last)
 
