@@ -99,7 +99,6 @@ local function complete_list(dir)
 	end
 	return list
 end
-
 return {
 	setup = function(opt)
 		local dir = vim.fs.normalize(opt.dir or fn.stdpath("cache") .. os_sep .. "session")
@@ -129,7 +128,7 @@ return {
 		end, {
 			nargs = "?",
 			complete = function()
-				complete_list(vim.g.session_dir)
+				return complete_list(vim.g.session_dir)
 			end,
 		})
 
@@ -138,7 +137,7 @@ return {
 		end, {
 			nargs = "?",
 			complete = function()
-				complete_list(vim.g.session_dir)
+				return complete_list(vim.g.session_dir)
 			end,
 		})
 	end,
